@@ -26,7 +26,7 @@ async(req,res)=>{
         }
         const payload={
             user:{
-                id:user.id,
+                id:user._id,
                 name:user.name
             }
         }
@@ -67,7 +67,7 @@ async (req,res)=>{
                 newuser.save();
             const payload={
                 user:{
-                    id:newuser.id,
+                    id:newuser._id,
                     name:newuser.name
                 }
             }
