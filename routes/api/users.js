@@ -26,12 +26,12 @@ async(req,res)=>{
         }
         const payload={
             user:{
-                id:user._id,
+                id:user.id,
                 name:user.name
             }
         }
         let token=jwt.sign(payload,process.env.SECRET,{expiresIn:'1h'});
-           res.json({data:{token,name:user.name}});
+           res.json({data:{token,id:user.id,name:user.name}});
        }else{
            res.status(400).json({err:'user doesnt exists'});
        }
@@ -67,13 +67,13 @@ async (req,res)=>{
                 newuser.save();
             const payload={
                 user:{
-                    id:newuser._id,
+                    id:newuser.id,
                     name:newuser.name
                 }
             }
             let token =await jwt.sign(payload,process.env.SECRET,{expiresIn:'1h'});
             if(token){
-                res.send({data:{token}});
+                res.send({data:{token,id:newuser.id}});
             }
         }
     } catch(err){
